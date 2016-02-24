@@ -7,7 +7,49 @@ html, body {
   background: #AFC7B9;
   font-family: 'Lato', sans-serif;
   height: 100%;
-  padding: 1em;
+}
+
+*, *:before, *:after {-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;margin:0;padding:0}
+header{background:#bdc3c7;line-height:0.5;font-family:sans-serif;text-transform:uppercase;font-size:16px;color:#fff}
+a{text-decoration:none;color:#fff}
+header{background:#1E262D;width:100%;position:relative}
+header:after{content:"";clear:both;display:block}
+.logo{float:left;padding:34px 0 26px}
+.logo a{font-size:18px;display:block;padding:0 0 0 20px}
+nav{float:right;}
+nav>ul{float:left;position:relative}
+nav li{list-style:none;float:left}
+nav li a{float:left;padding:35px}
+nav li a:hover{background:#2C3E50}
+nav li ul{display:none}
+nav li:hover ul{display:inline}
+nav li li{float:none}
+nav li li a{float:none;color:#333;display:block;padding:8px 10px;border-radius:3px;font-size:13px}
+nav li li a:hover{background:#bdc3c7;background:#FAFBFB}
+@media only screen and (max-width: 1170px) {
+  nav >ul>li >a{padding:35px 15px}
+}
+@media only screen and (min-width: 960px) {
+  nav{display:block!important}
+}
+@media only screen and (max-width: 600px) {
+  .logo {display: none;}
+/*  nav{display:none;width:100%;clear:both;float:none;max-height:400px;overflow-y:scroll}
+  #menu-icon{
+    width: 44px;
+    height: 100%;
+    background: url("cd-icon-menu.svg") no-repeat center center;
+    background-size: 44px 44px;
+    cursor: pointer;
+  }
+  nav{padding:10px}
+  nav ul{float:none}
+  nav li{float:none}
+  nav ul li a{float:none;padding:8px;display:block}
+  #header nav ul ul{display:block;position:static;background:none;border:none;padding:0}
+  #header nav a{color:#fff;padding:8px}
+  #header nav a:hover{background:#fff;color:#333;border-radius:3px}
+  #header nav ul li li a:before{content:"- "}*/
 }
 
 .left {
@@ -26,6 +68,7 @@ html, body {
   max-width: 1080px;
   margin: 0 auto;
   height: 100%;
+  padding-top: 30px;
 }
 
 .box {

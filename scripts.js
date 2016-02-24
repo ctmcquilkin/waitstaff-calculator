@@ -15,27 +15,39 @@ waitstaffCalculator.controller("index", ["$scope", function ($scope){
   
   $scope.getTip = function(){
     var Tip = 0;
-    Tip += $scope.transactions[0].base * ($scope.transactions[0].tip/100);
-    console.log('tip: ' + Tip);
-    return Tip;
+    if ($scope.transactions.length === 0) {
+      return;
+    } else {
+        Tip += $scope.transactions[0].base * ($scope.transactions[0].tip/100);
+        // console.log('tip: ' + Tip);
+        return Tip;
+    }
   };
 
   $scope.getSubTotal = function(){
-    var subTotal = $scope.transactions[0].base;
-    subTotal += parseInt($scope.transactions[0].tip);
-    console.log('subtotal: ' + subTotal);
-    return subTotal;
+    if ($scope.transactions.length === 0) {
+      return;
+    } else {
+        var subTotal = $scope.transactions[0].base;
+        subTotal += parseInt($scope.transactions[0].tip);
+        // console.log('subtotal: ' + subTotal);
+        return subTotal;
+      }
   };
 
   $scope.getTotal = function(){
     var Tax = 0;
     var Total = 0;
-    var subTotal = $scope.transactions[0].base;
-    subTotal += parseInt($scope.transactions[0].tip);
-    Tax += $scope.transactions[0].base * ($scope.transactions[0].tax/100);
-    Total += subTotal + Tax;
-    console.log('tip: ' + Total);
-    return Total;
+    if ($scope.transactions.length === 0) {
+      return;
+    } else {
+        var subTotal = $scope.transactions[0].base;
+        subTotal += parseInt($scope.transactions[0].tip);
+        Tax += $scope.transactions[0].base * ($scope.transactions[0].tax/100);
+        Total += subTotal + Tax;
+        // console.log('tip: ' + Total);
+        return Total;
+      }
   };
 
   $scope.getTipTotal = function(){
@@ -43,7 +55,7 @@ waitstaffCalculator.controller("index", ["$scope", function ($scope){
     for(var i = 0; i < $scope.transactions.length; i++){
         tipTotal += $scope.transactions[i].tip;
     }
-    console.log('grand total: ' + tipTotal);
+    // console.log('grand total: ' + tipTotal);
     return tipTotal;
   };
 
@@ -54,7 +66,7 @@ waitstaffCalculator.controller("index", ["$scope", function ($scope){
         tipTotal += $scope.transactions[i].tip;
     }
     tipAverage += tipTotal / $scope.transactions.length;
-    console.log('Tip Average: ' + tipAverage);
+    // console.log('Tip Average: ' + tipAverage);
     return tipAverage;
   };
 
@@ -73,7 +85,7 @@ waitstaffCalculator.controller("index", ["$scope", function ($scope){
        if($scope.mealPrice && $scope.taxRate && $scope.tipPercentage){
           $scope.transactions.push({base: $scope.mealPrice, tax: $scope.taxRate, tip: $scope.tipPercentage, total: $scope.mealPrice + ($scope.mealPrice * ($scope.taxRate/100)) + ($scope.mealPrice * ($scope.tipPercentage/100)), checked: false});
   
-          console.log($scope.transactions)
+          // console.log($scope.transactions)
 
           $scope.mealPrice = '';
           $scope.tipPercentage = '';

@@ -43,7 +43,7 @@
 
           <h1>Last Transaction Totals</h1>
           <div ng-hide="transactions.length" class="center">No Transactions.</div>
-          <div ng-if="transactions.length" class="list">
+          <div ng-hide="!transactions.length" class="list">
             <div class="cost cf">
               <span class="left">Subtotal:</span>
               <span class="right">{{getSubTotal() | currency}}</span>
@@ -62,7 +62,7 @@
         <div class="box" id="inventory">
           <h1>My Earnings Info</h1>
           <div ng-hide="transactions.length" class="center">No Earnings.</div>
-          <div ng-if="transactions.length" class="list">
+          <div ng-hide="!transactions.length" class="list">
             <table border="0" cellspacing="0">
               <tr>
                 <td class="left">Tip Total:</td>

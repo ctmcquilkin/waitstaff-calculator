@@ -11,94 +11,25 @@
 <body>
   <header id="header">
     <div class="logo">
-      <a href="#">Waitstaff Calculator</a>
+      <a href="#/">Waitstaff Calculator</a>
     </div>  
     <nav>
       <ul>
         <li>
-          <a href="">Home</a>
+          <a href="#/">Home</a>
         </li>
         <li>
-          <a href="">New Meal</a>
+          <a href="#/newMeal">New Meal</a>
         </li>
         <li>
-          <a href="">My Earnings</a>    
+          <a href="#/myEarnings">My Earnings</a>    
         </li>
       </ul>
     </nav>
   </header>
-  <div class="container" ng-controller="index">
-
-        <div class="box margin-right" id="waitstaff-calculator">
-          <h1>Ticket Details</h1>
-          
-          <div id="errorMessage"><i class="icon-cross"></i>Please enter all inputs!</div>
-          
-          <div id="successMessage"><i class="icon-checkmark"></i>Calculating...</div>
-          
-          <div class="half margin-right">
-           <p>Base Meal Price</p>
-          </div><div class="sign half"> 
-            <span>$</span>
-            <input type='number' class="searchButton" placeholder='Base Meal Price' ng-model="mealPrice" required>
-          </div>
-           <div class="half margin-right">
-            <p>Tax Rate</p>
-          </div><div class="sign half"> 
-            <span>%</span>
-            <input type='number' class="searchButton" placeholder='Tax Rate' ng-model="taxRate" ngTrim="3" required>
-          </div>
-           <div class="half margin-right">
-            <p>Tip Percentage</p>
-          </div><div class="sign half"> 
-            <span>%</span>
-            <input type='number' class="searchButton" placeholder='Tip Percentage' ng-model="tipPercentage" ngTrim="3" required>
-          </div>
-          
-          <button id="addTicket" ng-click="addTicket()">Calculate</button>
-          <button class="clear" ng-click="cancel()">Cancel</button>
-
-          <h1>Last Transaction Totals</h1>
-          <div ng-hide="transactions.length" class="center">No Transactions.</div>
-          <div ng-hide="!transactions.length" class="list">
-            <div class="cost cf">
-              <span class="left">Subtotal:</span>
-              <span class="right">{{getSubTotal() | currency}}</span>
-            </div>
-            <div class="cost cf">
-              <span class="left">Tip:</span>
-              <span class="right">{{getTip() | currency}}</span>
-            </div>
-            <div class="cost cf">
-              <span class="left">Total:</span>
-              <span class="right total">{{getTotal() | currency}}</span>
-            </div>
-          </div>
-        </div>
-        
-        <div class="box" id="inventory">
-          <h1>My Earnings Info</h1>
-          <div ng-hide="transactions.length" class="center">No Earnings.</div>
-          <div ng-hide="!transactions.length" class="list">
-            <table border="0" cellspacing="0">
-              <tr>
-                <td class="left">Tip Total:</td>
-                <td class="center">{{getTipTotal() | currency}}</td>
-              </tr>
-              <tr>
-                <td class="left">Ticket Count:</td>
-                <td class="center">{{ transactions.length }}</td>
-              </tr>
-              <tr>
-                <td class="left">Average Tip per ticket:</td>
-                <td class="center">{{getTipAverage() | currency}}</td>
-              </tr>
-            </table>
-            <button class="clear" ng-click="clearAll(transactions)">Clear Ticket List</button>
-        </div>
-        </div>
-      </div>
-      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script> 
+  <div class="container" ng-view></div>
+      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.js"></script>
+      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-route.js"></script> 
       <script type="text/javascript" src="scripts.js"></script>
 </body>
 </html>

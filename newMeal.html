@@ -3,10 +3,9 @@
          <div class="box margin-right" id="waitstaff-calculator">
           <h1>Ticket Details</h1>
           
-          <form name="mealForm" ng-class="{true: 'error'}[submitted && mealForm.price.$invalid]">
-            <div ng-show="submitForm.$invalid" id="errorMessage"><i class="icon-cross"></i>Please enter all inputs!</div>
+          <form name="submitForm" ng-submit="addTicket()">
             
-            <div ng-show="submitted && mealForm.price.$error.required && mealForm.tax.$error.required && mealForm.percentage.$error.required" id="successMessage"><i class="icon-checkmark"></i>Calculating...</div>
+            <div ng-hide="!calculating" id="successMessage"></div>
             
             <div class="half margin-right">
              <p>Base Meal Price</p>

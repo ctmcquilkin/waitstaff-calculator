@@ -248,13 +248,13 @@ button:hover {
   border-radius: 5px;
 }
 
-#successMessage, #errorMessage {
+/*#successMessage, #errorMessage {
   display: none;
   text-align: center;
   margin: 0.5em 0;
   -webkit-transition: display 0.3s ease;
   transition: display 0.3s ease;
-}
+}*/
 
 i {
   vertical-align: baseline;

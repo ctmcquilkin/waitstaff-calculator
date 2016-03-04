@@ -1,19 +1,19 @@
         <div class="box" id="inventory">
-          <h1>My Earnings Info</h1>
-          <div ng-hide="getTicketCount" class="center">No Earnings.</div>
-          <div ng-hide="!getTicketCount" class="list">
+          <h1>My Earnings Info{{fromService}}</h1>
+<!--           <div ng-hide="mealCount" class="center">No Earnings.</div> -->
+          <div class="list">
             <table border="0" cellspacing="0">
               <tr>
                 <td class="left">Tip Total:</td>
-                <td class="center">{{getTipTotal() | currency}}</td>
+                <td class="center">{{ tipTotal | currency }}</td>
               </tr>
               <tr>
                 <td class="left">Ticket Count:</td>
-                <td class="center">{{ getTicketCount() }}</td>
+                <td class="center">{{ mealCount }}</td>
               </tr>
               <tr>
                 <td class="left">Average Tip per ticket:</td>
-                <td class="center">{{getTipAverage() | currency}}</td>
+                <td class="center">{{ tipAverage | currency }}</td>
               </tr>
             </table>
             <button class="clear" ng-click="clearAll(transactions)">Clear Ticket List</button>

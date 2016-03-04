@@ -11,30 +11,79 @@ var waitstaffCalculator = angular.module("root", ['ngRoute'])
           controller: 'myEarningsCtrl'
         });
     }])
-    .service('totalService', function() {
-      var totals = [
-        {tipTotal: 0},
-        {mealCount: 0},
-        {tipAverage: 0}
-      ];
-      this.setTotalTip = function(tip) {
-        this.totals.tipTotal = tip;
+    .factory('totalService', function() {
+      var totals = {
+        tipTotals: 0,
+        mealCount: 0,
+        tipAverage: 0,
       };
-      this.returnTotalTip = function() {
-        return this.totals.tipTotal;
+
+      function totalTip(tip){
+          return totals.tipTotal += tip;
       };
-      this.setMealCount = function(meals) {
-        this.totals.mealCount = meals;
+      function mealCount(mealCount){
+          return totals.mealCount += mealCount;
       };
-      this.returnMealCount = function() {
-        return this.totals.mealCount;
+      function setTipAverage(tipAverage){
+          return totals.tipAverage += tipAverage;
       };
-      this.setTipAverage = function(tip) {
-        this.totals.setTipAverage = tip;
-      };
-      this.returnTipAverage = function() {
-        return this.totals.returnTipAverage;
-      };
+      return totals;
+    })
+    // .factory('totalService', function() {
+    //   var totals = {
+    //     tipTotals: 0,
+    //     mealCount: 0,
+    //     tipAverage: 0,
+    //   };
+
+    //     return {
+    //         totalTip: function(tip){
+    //             return totals.tipTotal += tip;
+    //         },
+    //         mealCount: function(mealCount){
+    //             return totals.mealCount += mealCount;
+    //         },
+    //         setTipAverage: function(tipAverage){
+    //             return totals.tipAverage += tipAverage;
+    //         },
+    //     };
+    // })
+    // .service('totalService', function() {
+    //     var totals = {
+    //       tipTotal: 0,
+    //       mealCount: 0,
+    //       tipAverage: 0,
+    //     };
+    //     this.totalTip = function(tip) { return totals.tipTotal += tip };
+         
+    //     this.mealCount = function(mealCount) { return totals.mealCount += mealCount };
+         
+    //     this.setTipAverage = function(tipAverage) { return totals.tipAverage += tipAverage };
+    // })
+    // .service('totalService', function() {
+    //   var totals = [
+    //     {tipTotal: 0},
+    //     {mealCount: 0},
+    //     {tipAverage: 0}
+    //   ];
+    //   this.setTotalTip = function(tip) {
+    //     this.totals.tipTotal = tip;
+    //   };
+    //   this.returnTotalTip = function() {
+    //     return this.totals.tipTotal;
+    //   };
+    //   this.setMealCount = function(meals) {
+    //     this.totals.mealCount = meals;
+    //   };
+    //   this.returnMealCount = function() {
+    //     return this.totals.mealCount;
+    //   };
+    //   this.setTipAverage = function(tip) {
+    //     this.totals.setTipAverage = tip;
+    //   };
+    //   this.returnTipAverage = function() {
+    //     return this.totals.returnTipAverage;
+    //   };
       // var totals = [
       //   {tipTotal: 0},
       //   {mealCount: 0},
@@ -61,7 +110,7 @@ var waitstaffCalculator = angular.module("root", ['ngRoute'])
       //     return tipAverage;
       //   }
       // };
-    })
+    // })
     .controller("newMealCtrl", ["$scope", function ($scope, totalService){
   
       $scope.mealPrice;
@@ -115,7 +164,7 @@ var waitstaffCalculator = angular.module("root", ['ngRoute'])
             tipTotal += $scope.transactions[i].tip;
         }
         // console.log('grand total: ' + tipTotal);
-        totalService.setTotalTip(tipTotal);
+        totalService.totalTip(tipTotal);
         return tipTotal;
       };
 
@@ -126,9 +175,11 @@ var waitstaffCalculator = angular.module("root", ['ngRoute'])
             tipTotal += $scope.transactions[i].tip;
         }
         tipAverage += tipTotal / $scope.transactions.length;
-        // console.log('Tip Average: ' + tipAverage);
-        totalService.setMealCount($scope.transactions.length);
+        totalService.mealCount($scope.transactions.length);
         totalService.setTipAverage(tipAverage);
+        // console.log('Tip Average: ' + tipAverage);
+        // totalService.setMealCount($scope.transactions.length);
+        // totalService.setTipAverage(tipAverage);
         return tipAverage;
       };
 
@@ -156,17 +207,22 @@ var waitstaffCalculator = angular.module("root", ['ngRoute'])
         }
     
     }])
-    .controller("myEarningsCtrl", ["$scope", function ($scope, totalService) {
-      $scope.getTipTotal = function() {
-        return totalService.returnTotalTip();
-      };
-      $scope.getTicketCount = function() {
-        return totalService.returnMealCount();
-      };
-      $scope.getTipAverage = function() {
-        return totalService.returnTipAverage();
-      };
-    }])
+    .controller("myEarningsCtrl", function ($scope, totalService) {
+        // $scope.fromFactory = totalService.totalTip(20);
+        $scope.tipTotal = totalService.tipTotals;
+        $scope.mealCount = totalService.mealCount;
+        $scope.tipAverage = totalService.tipAverage;
+        console.log('tip total:' + totalService.tipTotals);
+      // $scope.getTipTotal = function() {
+      //   return totalService.returnTotalTip();
+      // };
+      // $scope.getTicketCount = function() {
+      //   return totalService.returnMealCount();
+      // };
+      // $scope.getTipAverage = function() {
+      //   return totalService.returnTipAverage();
+      // };
+    })
     .controller('indexCtrl', function($scope) {
         //empty for now
     });

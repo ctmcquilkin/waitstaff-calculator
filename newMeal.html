@@ -8,13 +8,13 @@
             <div ng-hide="!calculating" id="successMessage"></div>
             
             <div class="half margin-right">
-             <p>Base Meal Price</p>
+             <p>Base Meal Price{{stringValue()}}</p>
             </div><div class="sign half"> 
               <span>$</span>
               <input type='number' name="price" class="searchButton" placeholder='Base Meal Price' ng-model="mealPrice" required>
             </div>
              <div class="half margin-right">
-              <p>Tax Rate</p>
+              <p>Tax Rate{{objectValue.data}}</p>
             </div><div class="sign half"> 
               <span>%</span>
               <input type='number' name="tax" class="searchButton" placeholder='Tax Rate' ng-model="taxRate" ngTrim="3" required>

@@ -1,21 +1,23 @@
         <div class="box" id="inventory">
-          <h1>My Earnings Info{{fromService}}</h1>
+          <h1>My Earnings Info</h1>
 <!--           <div ng-hide="mealCount" class="center">No Earnings.</div> -->
           <div class="list">
             <table border="0" cellspacing="0">
-              <tr>
-                <td class="left">Tip Total:</td>
-                <td class="center">{{ tipTotal | currency }}</td>
+              <tr ng-repeat="(key, value) in totals">
+                <td> {{key}} </td> <td> {{ value }} </td>
+              </tr>
+<!--               <tr ng-repeat="total in total" >
+                <td class="left">{total[0]}:</td>
+                <td class="center">{{ getTotals() }}</td>
               </tr>
               <tr>
                 <td class="left">Ticket Count:</td>
-                <td class="center">{{ mealCount }}</td>
+                <td class="center">{{ total.mealCount }}</td>
               </tr>
               <tr>
                 <td class="left">Average Tip per ticket:</td>
-                <td class="center">{{ tipAverage | currency }}</td>
-              </tr>
+                <td class="center">{{ total.tipAverage }}</td>
+              </tr> -->
             </table>
-            <button class="clear" ng-click="clearAll(transactions)">Clear Ticket List</button>
         </div>
         </div>

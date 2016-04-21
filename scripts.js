@@ -9,7 +9,8 @@ var waitstaffCalculator = angular.module("root", ['ngRoute'])
         }).when('/myEarnings', {
           templateUrl : 'myEarnings.html',
           controller: 'myEarningsCtrl'
-        });
+        })
+        .otherwise('/indexCtrl');
     }])
     .service('totalService', function() {
         var totals = [];

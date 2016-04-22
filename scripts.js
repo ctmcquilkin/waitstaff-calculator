@@ -1,4 +1,4 @@
-var waitstaffCalculator = angular.module("root", ['ngRoute'])
+var waitstaffCalculator = angular.module("root", ['ngAnimate', 'ngRoute'])
     .config(['$routeProvider', function($routeProvider){
         $routeProvider.when('/', {
             template : '<p>Welcome to waitstaffCalculator</p>',

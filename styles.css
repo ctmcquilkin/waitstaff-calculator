@@ -10,7 +10,7 @@ html, body {
 }
 
 *, *:before, *:after {-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;margin:0;padding:0}
-header{background:#bdc3c7;line-height:0.5;font-family:sans-serif;text-transform:uppercase;font-size:16px;color:#fff}
+header{background:#bdc3c7;line-height:0.5;font-family:sans-serif;text-transform:uppercase;font-size:16px;color:#fff; z-index:1}
 a{text-decoration:none;color:#fff}
 header{background:#1E262D;width:100%;position:relative}
 header:after{content:"";clear:both;display:block}
@@ -293,6 +293,53 @@ i.delete:hover {
 #errorMessage {
   color: red;
 }
+
+/* Animation */
+.container.ng-enter,
+.container.ng-leave {
+  -webkit-transition: 1s ease all;
+  transition: 1s ease all;
+}
+
+.container.ng-enter {
+  animation: rotateFoldBottom 0.5s both ease-in;
+}
+.container.ng-leave {
+  animation:rotateFoldTop 0.5s both ease-in;
+  z-index: 0;
+}
+
+@-webkit-keyframes rotateFoldBottom {
+	from { }
+	to { opacity: 0; -webkit-transform: translateY(100%) rotateX(-90deg); }
+}
+@keyframes rotateFoldBottom {
+	from { }
+	to { opacity: 0; -webkit-transform: translateY(100%) rotateX(-90deg); transform: translateY(100%) rotateX(-90deg); }
+}
+@-webkit-keyframes rotateFoldTop {
+	from { }
+	to { opacity: 0; -webkit-transform: translateY(-100%) rotateX(90deg); }
+}
+@keyframes rotateFoldTop {
+	from { }
+	to { opacity: 0; -webkit-transform: translateY(-100%) rotateX(90deg); transform: translateY(-100%) rotateX(90deg); }
+}
+/* rotate out newspaper */
+@keyframes rotateOutNewspaper {
+    to      { transform: translateZ(-3000px) rotateZ(360deg); opacity: 0; }
+}
+/* entering animations --------------------------------------- */
+/* scale up */
+@keyframes scaleUp {
+    from    { opacity: 0.3; -webkit-transform: scale(0.8); }
+}
+/* slide in from the bottom */
+@keyframes slideInUp {
+    from    { transform:translateY(100%); }
+    to      { transform: translateY(0); }
+}
+
 
 @media (max-width: 800px) {
   .box {

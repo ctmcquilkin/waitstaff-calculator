@@ -1,7 +1,7 @@
 var waitstaffCalculator = angular.module("root", ['ngAnimate', 'ngRoute'])
     .config(['$routeProvider', function($routeProvider){
         $routeProvider.when('/', {
-            template : '<p>Welcome to waitstaffCalculator</p>',
+            template : '<p>Welcome to waitstaffCalculator, an Angular App that calculates tip and tax like a cash register. <br>Built as an Angular learning project by Chuck McQuilkin.</p>',
             controller : 'indexCtrl'
         }).when('/newMeal', {
           templateUrl : 'newMeal.html',

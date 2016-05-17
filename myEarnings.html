@@ -1,7 +1,15 @@
         <div class="box" id="inventory">
           <h1>My Earnings Info</h1>
-          <div ng-hide="mealCount" class="center">No Earnings.</div>
-          <div class="list">
+          <div ng-hide="!mealCount" class="center">No Earnings.</div>
+          <div class="list" ng-hide="mealCount">
+            <div class="cost cf" ng-repeat="(key, value) in totals">
+            	<div ng-repeat="(key, value) in value">
+				  <span class="left">{{ key }}:</span>
+				  <span class="right">{{ value | currency}}</span>
+				</div>
+            </div>
+          </div>
+<!-- 
             <table border="0" cellspacing="0">
               <tr ng-repeat="(key, value) in totals">
                 <td ng-repeat="(key, value) in value">
@@ -9,18 +17,7 @@
                   <span class="right total">{{ value }}</span>
                 </td>
               </tr>
-<!--               <tr ng-repeat="total in total" >
-                <td class="left">{total[0]}:</td>
-                <td class="center">{{ getTotals() }}</td>
-              </tr>
-              <tr>
-                <td class="left">Ticket Count:</td>
-                <td class="center">{{ total.mealCount }}</td>
-              </tr>
-              <tr>
-                <td class="left">Average Tip per ticket:</td>
-                <td class="center">{{ total.tipAverage }}</td>
-              </tr> -->
             </table>
+ -->
         </div>
         </div>
